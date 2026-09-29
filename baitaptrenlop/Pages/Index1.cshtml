@@ -1,0 +1,39 @@
+﻿@page
+@model baitaptrenlop.Pages.Index1Model
+@{
+    Layout = null;
+    DayOfWeek today = DateTime.Now.DayOfWeek;
+    bool isWeekend = (today == DayOfWeek.Saturday || today == DayOfWeek.Sunday);
+}
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8" />
+    <title>Kiểm tra cuối tuần</title>
+    <style>
+            body {
+                font-family: Arial, sans-serif;
+                margin: 40px;
+            }
+
+            .message {
+                font-size: 24px;
+                font-weight: bold;
+                color: #2e7d32;
+            }
+    </style>
+</head>
+<body>
+    <h2>Hôm nay là: @DateTime.Now.ToString("dddd, dd/MM/yyyy")</h2>
+
+    @if (isWeekend)
+    {
+        <div class="message">Have nice weekend</div>
+    }
+    else
+    {
+        <div class="message" style="color: #1976d2;">Hôm nay là ngày làm việc trong tuần.</div>
+    }
+</body>
+</html>

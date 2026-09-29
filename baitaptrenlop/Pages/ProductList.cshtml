@@ -1,0 +1,55 @@
+﻿@page
+@model baitaptrenlop.Pages.ProductListModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8" />
+    <title>Danh sách sản phẩm</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; }
+        h2 { color: #333; }
+        table { border-collapse: collapse; width: 100%; max-width: 650px; margin-top: 20px; }
+        th, td { border: 1px solid #ddd; padding: 10px; text-align: left; }
+        th { background-color: #007bff; color: white; }
+        tr:nth-child(even) { background-color: #f9f9f9; }
+    </style>
+</head>
+<body>
+
+    <h2>Danh sách sản phẩm (Từ SQL Server)</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Mã (ID)</th>
+                <th>Tên sản phẩm</th>
+                <th>Giá bán</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model.Products != null && Model.Products.Count > 0)
+            {
+                @foreach (var item in Model.Products)
+                {
+                    <tr>
+                        <td>@item.Id</td>
+                        <td>@item.Name</td>
+                        <td>@item.Price.ToString("N0") VNĐ</td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="3">Không có dữ liệu.</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+</body>
+</html>
